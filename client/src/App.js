@@ -25,6 +25,7 @@ function App() {
           <li key={paciente.id}>
             <strong>Nombre:</strong> {paciente.username}<br />
             <strong>Edad:</strong> {paciente.age}<br />
+            <strong>contra:</strong> {paciente.password}<br />
           </li>
         ))}
       </ul>

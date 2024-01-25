@@ -9,6 +9,8 @@ const apiRoutes = require('./routes/api'); // Importa las rutas de api.js
 
 const app = express();
 const port = 3000;
+// Agrega el middleware express.json() para analizar JSON en el cuerpo de las solicitudes
+app.use(express.json());
 
 // Configura Sequelize utilizando la información de config/config.json
 const sequelize = db.sequelize;

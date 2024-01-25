@@ -16,9 +16,10 @@ router.get('/pacientes', async (req, res) => {
 
 // Ruta para agregar un nuevo paciente
 router.post('/pacientes', async (req, res) => {
-  const { nombre, edad, enfermedad } = req.body; // Recupera los datos del cuerpo de la solicitud
+  console.log(req.body);
+  const { username, email, password, age, height } = req.body; // Recupera los datos del cuerpo de la solicitud
   try {
-    await User.create({ nombre, edad, enfermedad }); // Utiliza el método create del modelo User
+    await User.create({ username, email, password, age, height }); // Utiliza el método create del modelo User
     res.status(201).json({ message: 'Paciente agregado con éxito' });
   } catch (error) {
     console.error('Error al agregar paciente:', error);

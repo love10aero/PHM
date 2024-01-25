@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    altura: {
+    height: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
