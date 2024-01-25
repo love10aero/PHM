@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-const { query } = require('../db'); // Importa la función de consulta a la base de datos
+const { User } = require('../models'); // Importa el modelo de usuario
 
 // Ruta para obtener todos los pacientes
 router.get('/pacientes', async (req, res) => {
   try {
-    const result = await query('SELECT * FROM pacientes');
-    res.json(result);
+    const pacientes = await User.findAll(); // Utiliza el método findAll del modelo User
+    res.json(pacientes);
   } catch (error) {
     console.error('Error al obtener pacientes:', error);
     res.status(500).json({ error: 'Error interno del servidor' });
@@ -18,7 +17,7 @@ router.get('/pacientes', async (req, res) => {
 router.post('/pacientes', async (req, res) => {
   const { nombre, edad, enfermedad } = req.body; // Recupera los datos del cuerpo de la solicitud
   try {
-    await query('INSERT INTO pacientes (nombre, edad, enfermedad) VALUES ($1, $2, $3)', [nombre, edad, enfermedad]);
+    await User.create({ nombre, edad, enfermedad }); // Utiliza el método create del modelo User
     res.status(201).json({ message: 'Paciente agregado con éxito' });
   } catch (error) {
     console.error('Error al agregar paciente:', error);

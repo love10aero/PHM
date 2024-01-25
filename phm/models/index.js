@@ -13,7 +13,16 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(config.database, config.username, config.password, {
+    dialect: config.dialect, // Especifica el dialecto aquí (por ejemplo, 'postgres')
+    host: config.host, // Especifica el host de la base de datos aquí
+    port: config.port, // Especifica el puerto de la base de datos aquí
+    define: {
+      timestamps: true, // Opcional: Habilita timestamps en tus modelos
+    },
+    logging: false, // Opcional: Deshabilita el registro de consultas en la consola
+    alter: true, // Habilita migraciones automáticas basadas en cambios en el modelo
+  });
 }
 
 fs

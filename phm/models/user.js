@@ -16,6 +16,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    altura: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     // Agrega más campos según sea necesario
   });
 
