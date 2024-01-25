@@ -4,6 +4,7 @@ const { User } = require('../models'); // Importa el modelo de usuario
 
 // Ruta para obtener todos los pacientes
 router.get('/pacientes', async (req, res) => {
+  console.log('aqui toy');
   try {
     const pacientes = await User.findAll(); // Utiliza el método findAll del modelo User
     res.json(pacientes);

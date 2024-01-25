@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
   const User = sequelize.define('User', {
@@ -15,6 +16,11 @@ module.exports = (sequelize) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      set(value) {
+        // Hash de la contraseña antes de almacenarla
+        const hashedPassword = bcrypt.hashSync(value, 10); // 10 es el costo de hashing (puedes ajustarlo según tus necesidades)
+        this.setDataValue('password', hashedPassword);
+      },
     },
     age: {
       type: DataTypes.INTEGER,

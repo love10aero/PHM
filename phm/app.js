@@ -1,6 +1,7 @@
 // Importa las dependencias necesarias
 const express = require('express');
 const { Sequelize } = require('sequelize');
+const cors = require('cors')
 // Importa la configuración de Sequelize desde db/index.js
 const db = require('./models');
 
@@ -11,7 +12,7 @@ const port = 3000;
 
 // Configura Sequelize utilizando la información de config/config.json
 const sequelize = db.sequelize;
-
+app.use(cors())
 // Usa las rutas de api.js
 app.use('/api', apiRoutes);
 
